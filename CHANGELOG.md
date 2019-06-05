@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.0.0...v1.0.1) (2019-06-05)
+
+
+### Bug Fixes
+
+* **verify-conditions:** Use try catch ([ce96937](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/ce96937))
+
 # 1.0.0 (2019-06-05)
 
 
