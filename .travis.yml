@@ -1,0 +1,19 @@
+language: node_js
+
+node_js: '10'
+
+script:
+  - echo "Hello world!"
+
+cache:
+  directories:
+    - $HOME/.npm
+
+stages:
+  - test
+  - name: release
+    if: branch = master AND type = push AND fork = false
+
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
