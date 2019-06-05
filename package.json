@@ -1,0 +1,20 @@
+{
+    "name": "semantic-release-shopware-plugin",
+    "version": "0.0.0-development",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "commit": "git-cz",
+        "release": "semantic-release"
+    },
+    "devDependencies": {
+        "commitizen": "^3.1.1",
+        "cz-conventional-changelog": "^2.1.0",
+        "semantic-release": "^15.13.12"
+    },
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-conventional-changelog"
+        }
+    }
+}
