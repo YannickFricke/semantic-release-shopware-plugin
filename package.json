@@ -20,6 +20,7 @@
         }
     },
     "dependencies": {
+        "@semantic-release/error": "^2.2.0",
         "axios": "^0.19.0"
     }
 }
