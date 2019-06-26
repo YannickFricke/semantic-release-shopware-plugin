@@ -26,7 +26,7 @@ export class XMLUpdater {
      * @type {IPlugin}
      * @memberof XMLUpdater
      */
-    public decodedPluginFileContents: IPlugin;
+    public decodedPluginFileContents!: IPlugin;
 
     /**
      * The filesystem which should be used
@@ -50,7 +50,6 @@ export class XMLUpdater {
     ) {
         this.pluginFile = pluginFile;
         this.pluginFileContents = '';
-        this.decodedPluginFileContents = undefined;
         this.fileSystem = fileSystem || 'fs';
     }
 
