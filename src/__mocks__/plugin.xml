@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/5.3/engine/Shopware/Components/Plugin/schema/plugin.xsd">
+    <label lang="de">Automatische Aktualisierung der Produktbilder</label>
+    <label lang="en">Automatic update of the product images</label>
+
+    <version>0.0.0</version>
+    <copyright>(c) by Yannick Fricke</copyright>
+    <license>MIT</license>
+    <link>https://github.com/YannickFricke/semantic-release-shopware-plugin/</link>
+    <author>Yannick Fricke</author>
+    <compatibility minVersion="5.3.0" />
+
+    <changelog version="1.0.1">
+        <changes lang="de">Erstveröffentlichung</changes>
+        <changes lang="en">
+        <![CDATA[
+                <h1>1.0.1 (2019-06-21)</h1>
+
+                <h3>Features</h3>
+
+                <ul>
+                    <li>
+                        <b>Constants</b> Added plugin constants <a href="https://github.com/YannickFricke/ProduktbildAktualisierung/commit/8a113c2">8a113c2</a>
+                    </li>
+                    <li>
+                        <b>CronJob</b> Added the product picture updater cronjob <a href="https://github.com/YannickFricke/ProduktbildAktualisierung/commit/9419885">9419885</a>
+                    </li>
+                    <li>
+                        <b>Plugin</b> Added basic plugin class <a href="https://github.com/YannickFricke/ProduktbildAktualisierung/commit/d9052af">d9052af</a>
+                    </li>
+                </ul>
+        ]]>
+        </changes>
+    </changelog>
+    <changelog version="1.0.0">
+        <changes lang="en">
+        <![CDATA[
+                <h1>1.0.0 (2019-06-21)</h1>
+
+                <h3>Features</h3>
+
+                <ul>
+                    <li>
+                        <b>Constants</b> Added plugin constants <a href="https://github.com/YannickFricke/ProduktbildAktualisierung/commit/8a113c2">8a113c2</a>
+                    </li>
+                    <li>
+                        <b>CronJob</b> Added the product picture updater cronjob <a href="https://github.com/YannickFricke/ProduktbildAktualisierung/commit/9419885">9419885</a>
+                    </li>
+                    <li>
+                        <b>Plugin</b> Added basic plugin class <a href="https://github.com/YannickFricke/ProduktbildAktualisierung/commit/d9052af">d9052af</a>
+                    </li>
+                </ul>
+        ]]>
+        </changes>
+    </changelog>
+</plugin>
