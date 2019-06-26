@@ -23,10 +23,10 @@ export class XMLUpdater {
     /**
      * The decoded plugin file contents
      *
-     * @type {(IPlugin | {})}
+     * @type {IPlugin}
      * @memberof XMLUpdater
      */
-    public decodedPluginFileContents: IPlugin | undefined;
+    public decodedPluginFileContents: IPlugin;
 
     /**
      * The filesystem which should be used
@@ -60,7 +60,7 @@ export class XMLUpdater {
      * @returns The decoded data
      * @memberof XMLUpdater
      */
-    decodePluginFile() {
+    decodePluginFile(): IPlugin {
         const fileSystem = require(this.fileSystem);
 
         this.pluginFileContents = fileSystem.readFileSync(
@@ -73,7 +73,7 @@ export class XMLUpdater {
             )
         );
 
-        return this.decodedPluginFileContents;
+        return this.decodedPluginFileContents as IPlugin;
     }
 
     /**
