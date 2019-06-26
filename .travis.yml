@@ -5,9 +5,7 @@ node_js: '10'
 script:
   - npm test
 
-cache:
-  directories:
-    - $HOME/.npm
+cache: yarn
 
 jobs:
   include:
