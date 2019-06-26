@@ -5,7 +5,9 @@
     "license": "MIT",
     "scripts": {
         "commit": "git-cz",
-        "release": "semantic-release"
+        "release": "semantic-release",
+        "test": "jest",
+        "test:watch": "jest --watch"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^3.0.2",
