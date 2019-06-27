@@ -1,10 +1,10 @@
-import { XMLUpdater } from '../XMLUpdater';
+import { resolve } from 'path';
 import { IPlugin } from '../IPlugin';
-import { resolve } from "path";
+import { XMLUpdater } from '../XMLUpdater';
 
 const testPluginFile = resolve(
     process.cwd(),
-    'plugin.xml'
+    'plugin.xml',
 );
 const inMemoryFsPath = '../steps/in-memory-fs';
 
@@ -58,7 +58,6 @@ describe('XMLUpdater', () => {
             });
         });
     });
-
 
     describe('Property checks', () => {
         let result: IPlugin;
