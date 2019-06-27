@@ -1,8 +1,8 @@
-import { resolve } from "path";
-import { IPluginConfig } from "../config/IPluginConfig";
-import { toJson, toXml } from "xml2json";
+import { resolve } from 'path';
+import { toJson, toXml } from 'xml2json';
+import { IPluginConfig } from '../config/IPluginConfig';
 
-const error = require('@semantic-release/error');
+// const error = require('@semantic-release/error');
 
 let logger: any;
 
@@ -26,7 +26,7 @@ module.exports = (pluginConfig: IPluginConfig, args: any) => {
     logger.log(releaseNotes);
 
     if (!fs.existsSync(pluginFile)) {
-        throw new error(`Could not find plugin.xml in '${process.cwd()}'`);
+        throw new Error(`Could not find plugin.xml in '${process.cwd()}'`);
     }
 
     const pluginFileContents = fs.readFileSync(pluginFile);
@@ -34,12 +34,12 @@ module.exports = (pluginConfig: IPluginConfig, args: any) => {
     const result = JSON.parse(toJson(pluginFileContents));
 
     if (pluginConfig.shouldIncrementVersion === true) {
-        result['plugin']['version'] = nextVersion;
+        result.plugin.version = nextVersion;
     }
 
-    const plugin = result['plugin'];
-    let changelogEntries = plugin['changelog'];
-    const version = plugin['version'];
+    const plugin = result.plugin;
+    const changelogEntries = plugin.changelog;
+    const version = plugin.version;
 
     printElements(plugin);
 
@@ -51,14 +51,14 @@ module.exports = (pluginConfig: IPluginConfig, args: any) => {
     fs.writeFileSync(pluginFile, toXml(result));
 
     changelogEntries.forEach((entry: any) => {
-        logger.log(entry['changes']);
+        logger.log(entry.changes);
     });
 
     return result;
 };
 
 const printElements = (obj: any) => {
-    Object.keys(obj).forEach(key => {
+    Object.keys(obj).forEach((key) => {
         const entry = obj[key];
         if (typeof entry !== 'string') {
             return;

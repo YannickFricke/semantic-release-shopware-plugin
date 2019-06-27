@@ -1,7 +1,5 @@
-import { IPluginConfig } from "../config/IPluginConfig";
 import axios from 'axios';
-
-const SemanticReleaseError = require('@semantic-release/error');
+import { IPluginConfig } from '../config/IPluginConfig';
 
 module.exports = async (pluginConfig: IPluginConfig, { logger }: any) => {
     const requiredEnvironmentVariables = [
@@ -13,10 +11,8 @@ module.exports = async (pluginConfig: IPluginConfig, { logger }: any) => {
         const requiredEnvironmentVariable = requiredEnvironmentVariables[index];
 
         if (!process.env[requiredEnvironmentVariable]) {
-            throw new SemanticReleaseError(
+            throw new Error(
                 `Environment variable "${requiredEnvironmentVariable}" is not set`,
-                'ESCSINVALIDCREDS',
-                'Please check your credentials in the environment variables'
             );
         }
     }
@@ -29,41 +25,35 @@ module.exports = async (pluginConfig: IPluginConfig, { logger }: any) => {
 
     try {
         response = await httpClient.post('accesstokens', {
-            shopwareId: process.env['SCS_USERNAME'],
-            password: process.env['SCS_PASSWORD'],
+            password: process.env.SCS_PASSWORD,
+            shopwareId: process.env.SCS_USERNAME,
         });
     } catch (error) {
         if (error.response) {
             switch (error.response.status) {
                 case 401:
-                    throw new SemanticReleaseError(
+                    throw new Error(
                         'Invalid credentials',
-                        'ESCSINVALIDCREDS',
-                        'Please check your credentials in the environment variables'
                     );
                 default:
-                    throw new SemanticReleaseError(
+                    throw new Error(
                         error.Message,
-                        'ESCSUNKNOWNERR'
                     );
             }
         } else {
-            throw new SemanticReleaseError(
+            throw new Error(
                 error.Message,
-                'ESCSUNKNOWNERR'
             );
         }
     }
 
     if (response.data.success !== undefined && response.data.success === false) {
-        throw new SemanticReleaseError(
+        throw new Error(
             'Invalid credentials',
-            'ESCSINVALIDCREDS',
-            'Please check your credentials in the environment variables'
         );
     }
 
-    const accessToken = response.data['token'];
+    const accessToken = response.data.token;
 
     try {
         await httpClient.delete(`accesstokens/${accessToken}`);
