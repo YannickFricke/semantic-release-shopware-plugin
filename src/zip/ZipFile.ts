@@ -10,6 +10,14 @@ import { sep } from 'path';
  */
 export class ZipFile {
     /**
+     * A blacklist of not needed files / directories
+     *
+     * @memberof ZipFile
+     */
+    public readonly blacklist = [
+        'node_modules',
+    ];
+    /**
      * Root directory of zip file
      */
     private RootDirectory: string;
@@ -37,6 +45,15 @@ export class ZipFile {
      */
     public generateFileList(directory: string = ''): string[] {
         const result: string[] = [];
+
+        const directoryParts = directory.split(sep);
+        const filteredDirectoryParts = directoryParts.filter((entry) => {
+            return this.blacklist.includes(entry);
+        });
+
+        if (filteredDirectoryParts.length > 0) {
+            return result;
+        }
 
         if (directory === '') {
             directory = this.RootDirectory;
