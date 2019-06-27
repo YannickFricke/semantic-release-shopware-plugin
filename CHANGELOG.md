@@ -14,7 +14,7 @@
 * **XMLUpdater:** Added the XMLUpdater class ([c099933](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/c099933))
 * **ZipFile:** Added the basic ZipFile class ([84fa939](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/84fa939))
 
-## [1.0.1](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.0.0...v1.0.1) (2019-06-05)
+# [1.0.1](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.0.0...v1.0.1) (2019-06-05)
 
 
 ### Bug Fixes
