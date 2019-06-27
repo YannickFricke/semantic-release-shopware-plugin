@@ -1,3 +1,19 @@
+# [1.1.0](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.0.1...v1.1.0) (2019-06-27)
+
+
+### Bug Fixes
+
+* **XMLUpdater:** Fixed the initialization of the "decodedPluginFileContents" property ([832ea21](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/832ea21))
+
+
+### Features
+
+* **IPlugin:** Added the basic definition for a Shopware plugin ([b072787](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/b072787))
+* **Steps:** Added the source file for the publish step ([4374ba2](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/4374ba2))
+* **Steps:** Added the verifyConditions step ([b67d4ad](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/b67d4ad))
+* **XMLUpdater:** Added the XMLUpdater class ([c099933](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/c099933))
+* **ZipFile:** Added the basic ZipFile class ([84fa939](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/84fa939))
+
 ## [1.0.1](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.0.0...v1.0.1) (2019-06-05)
 
 
