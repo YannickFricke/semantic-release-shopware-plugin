@@ -1,8 +1,10 @@
 import { ZipFile } from "../ZipFile";
 import { resolve } from "path";
-import { existsSync } from "fs";
+import { existsSync, unlinkSync } from "fs";
 
 const workingDirectory = resolve('src', '__mocks__');
+const newVersion = '1.0.0';
+const zipFileName = `__mocks__-${newVersion}.zip`
 
 describe('ZipFile', () => {
     let zipFile: ZipFile;
@@ -11,6 +13,14 @@ describe('ZipFile', () => {
         zipFile = new ZipFile(
             workingDirectory
         );
+    });
+
+    afterEach(() => {
+        if (!existsSync(zipFileName)) {
+            return;
+        }
+
+        unlinkSync(zipFileName);
     });
 
     it('should be instantiable', () => {
@@ -22,9 +32,8 @@ describe('ZipFile', () => {
     });
 
     it('should pack a zip file', async () => {
-        const version = '1.0.0';
-        zipFile.packZip(version);
-        const zipFileExists = existsSync(`${zipFile.determineFolderName()}-${version}.zip`);
+        zipFile.packZip(newVersion);
+        const zipFileExists = existsSync(zipFileName);
 
         expect(zipFileExists).toBeTruthy();
     });
