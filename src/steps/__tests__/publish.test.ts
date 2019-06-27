@@ -1,5 +1,5 @@
-import { IPluginConfig } from "../../config/IPluginConfig";
-import { resolve } from "path";
+import { resolve } from 'path';
+import { IPluginConfig } from '../../config/IPluginConfig';
 
 const publishFunction = require('../Publish');
 
@@ -10,25 +10,25 @@ describe('Publish tests', () => {
 
     beforeEach(() => {
         pluginConfiguration = {
-            shouldIncrementVersion: true,
+            endpoint: undefined,
             fileSystem: resolve(
                 __dirname,
                 '..',
-                'in-memory-fs'
+                'in-memory-fs',
             ),
-            endpoint: undefined,
+            shouldIncrementVersion: true,
         };
 
         logMock = jest.fn();
 
         args = {
-            nextRelease: {
-                version: '1.0.0',
-                notes: '',
-            },
             logger: {
                 log: logMock,
-            }
+            },
+            nextRelease: {
+                notes: '',
+                version: '1.0.0',
+            },
         };
     });
 
