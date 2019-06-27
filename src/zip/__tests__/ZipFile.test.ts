@@ -1,5 +1,6 @@
 import { ZipFile } from "../ZipFile";
 import { resolve } from "path";
+import { existsSync } from "fs";
 
 const workingDirectory = resolve('src', '__mocks__');
 
@@ -16,6 +17,17 @@ describe('ZipFile', () => {
         expect(zipFile).toBeInstanceOf(ZipFile);
     });
 
+    it('should be instantiated with the current working directory', () => {
+        expect(zipFile.rootDirectory).toEqual(workingDirectory);
+    });
+
+    it('should pack a zip file', async () => {
+        const version = '1.0.0';
+        zipFile.packZip(version);
+        const zipFileExists = existsSync(`${zipFile.determineFolderName()}-${version}.zip`);
+
+        expect(zipFileExists).toBeTruthy();
+    });
 
     describe('File list', () => {
         it('should generate a list of files to archive', () => {
@@ -29,15 +41,5 @@ describe('ZipFile', () => {
                 zipFile.generateFileList();
             }).not.toThrow();
         });
-    });
-
-    it('should be instantiated with the current working directory', () => {
-        expect(zipFile.rootDirectory).toEqual(workingDirectory);
-    });
-
-    it('should pack a zip file', async () => {
-        const packedZipFile = zipFile.packZip('1.0.0');
-
-        expect(packedZipFile).toBeTruthy();
     });
 });
