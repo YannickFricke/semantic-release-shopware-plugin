@@ -5,7 +5,7 @@
 
 * **ci:** Run the build step before releasing ([bcb69b6](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/bcb69b6))
 
-# [1.1.0](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.0.1...v1.1.0) (2019-06-27)
+## [1.1.0](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.0.1...v1.1.0) (2019-06-27)
 
 
 ### Bug Fixes
@@ -21,14 +21,14 @@
 * **XMLUpdater:** Added the XMLUpdater class ([c099933](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/c099933))
 * **ZipFile:** Added the basic ZipFile class ([84fa939](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/84fa939))
 
-# [1.0.1](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.0.0...v1.0.1) (2019-06-05)
+## [1.0.1](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.0.0...v1.0.1) (2019-06-05)
 
 
 ### Bug Fixes
 
 * **verify-conditions:** Use try catch ([ce96937](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/ce96937))
 
-# 1.0.0 (2019-06-05)
+## 1.0.0 (2019-06-05)
 
 
 ### Features
