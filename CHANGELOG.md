@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.1.1...v1.2.0) (2019-06-27)
+
+
+### Features
+
+* **ZipFile:** Added blacklisting functionality ([a88259b](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/a88259b))
+
 ## [1.1.1](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.1.0...v1.1.1) (2019-06-27)
 
 
