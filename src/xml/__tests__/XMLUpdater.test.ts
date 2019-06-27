@@ -1,4 +1,5 @@
 import { resolve } from 'path';
+import { IChangelogEntry, IChangelogEntryProperties } from '../IChangelogEntry';
 import { IPlugin } from '../IPlugin';
 import { XMLUpdater } from '../XMLUpdater';
 
@@ -61,6 +62,7 @@ describe('XMLUpdater', () => {
 
     describe('Property checks', () => {
         let result: IPlugin;
+        let changelogs: IChangelogEntry[];
 
         beforeEach(() => {
             xmlUpdater = new XMLUpdater(
@@ -68,6 +70,7 @@ describe('XMLUpdater', () => {
                 inMemoryFsPath,
             );
             result = xmlUpdater.decodePluginFile();
+            changelogs = result.plugin.changelog as IChangelogEntry[];
         });
 
         it('should have the MIT license', () => {
@@ -89,6 +92,120 @@ describe('XMLUpdater', () => {
 
         it('should have a link to the GitHub repository', () => {
             expect(result.plugin.link.startsWith('https://github.com')).toBe(true);
+        });
+
+        describe('Changelog', () => {
+            it('should have entries', () => {
+                expect(changelogs.length).toBeGreaterThan(0);
+            });
+
+            describe('Version 1.0.0', () => {
+                let changes: IChangelogEntryProperties;
+
+                beforeEach(() => {
+                    changes = changelogs[1].changes as IChangelogEntryProperties;
+                });
+
+                it('should have the corresponding version', () => {
+                    expect(changelogs[1].version).toEqual('1.0.0');
+                });
+
+                it('should have one entry', () => {
+                    expect(typeof changes).toEqual('object');
+                });
+
+                it('should have one entry with the "en" lang key', () => {
+                    expect(changes.lang).toEqual('en');
+                });
+
+                describe('Content', () => {
+                    let content: string;
+
+                    beforeEach(() => {
+                        content = changes.$t;
+                    });
+                    it('should have content', () => {
+                        expect(content.length).toBeGreaterThan(0);
+                    });
+
+                    it('should have a newline', () => {
+                        expect(content.includes('\n')).toBeTruthy();
+                    });
+                });
+
+            });
+
+            describe('Version 1.0.1', () => {
+                let changes: IChangelogEntryProperties[];
+
+                beforeEach(() => {
+                    changes = changelogs[0].changes as IChangelogEntryProperties[];
+                });
+
+                it('should have the corresponding version', () => {
+                    expect(changelogs[0].version).toEqual('1.0.1');
+                });
+
+                it('should have two entries', () => {
+                    expect(changes).toHaveLength(2);
+                });
+
+                describe('First entry', () => {
+                    let entry: IChangelogEntryProperties;
+
+                    beforeEach(() => {
+                        entry = changes[0];
+                    });
+
+                    it('should have the "de" lang key', () => {
+                        expect(entry.lang).toEqual('de');
+                    });
+
+                    describe('Content', () => {
+                        let content: string;
+
+                        beforeEach(() => {
+                            content = entry.$t;
+                        });
+
+                        it('should have content', () => {
+                            expect(content.length).toBeGreaterThan(0);
+                        });
+
+                        it('should equal to "Erstveröffentlichung"', () => {
+                            expect(content).toEqual('Erstveröffentlichung');
+                        });
+                    });
+                });
+
+                describe('Second entry', () => {
+                    let entry: IChangelogEntryProperties;
+
+                    beforeEach(() => {
+                        entry = changes[1];
+                    });
+
+                    it('should have the "en" lang key', () => {
+                        expect(entry.lang).toEqual('en');
+                    });
+
+                    describe('Content', () => {
+                        let content: string;
+
+                        beforeEach(() => {
+                            content = entry.$t;
+                        });
+
+                        it('should have content', () => {
+                            expect(content.length).toBeGreaterThan(0);
+                        });
+
+                        it('should have a newline', () => {
+                            expect(content.includes('\n')).toBeTruthy();
+                        });
+                    });
+                });
+            });
         });
     });
 });
