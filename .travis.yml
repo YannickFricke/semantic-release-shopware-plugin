@@ -16,6 +16,7 @@ jobs:
       language: node_js
       node_js: '10'
       script:
+        - npm run build
         - npm run release
 
 stages:
