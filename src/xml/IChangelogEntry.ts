@@ -1,5 +1,4 @@
 /**
-import { IChangelogEntry } from "./../../../..//src/xml/IChangelogEntry";
  * Defines a changelog entry in the plugin.xml
  *
  * @export
