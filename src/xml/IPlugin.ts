@@ -1,7 +1,9 @@
+import { IChangelogEntry } from './IChangelogEntry';
+
 export interface IPlugin {
     plugin: {
         author: string,
-        changelog: [],
+        changelog: IChangelogEntry | IChangelogEntry[],
         compatibility: {
             minVersion: string,
         }
