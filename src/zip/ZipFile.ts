@@ -1,5 +1,5 @@
 import { create } from "archiver";
-import { resolve } from "path";
+import { sep } from "path";
 import { createWriteStream, createReadStream, readdirSync, statSync } from "fs";
 
 export class ZipFile {
@@ -44,8 +44,8 @@ export class ZipFile {
     public determineFolderName() {
         let result = this._rootDirectory;
 
-        if (this._rootDirectory.includes('/')) {
-            const parts = this._rootDirectory.split('\/');
+        if (result.includes(sep)) {
+            const parts = this._rootDirectory.split(sep);
 
             result = parts[parts.length - 1];
         }
