@@ -1,5 +1,5 @@
-import { IPlugin } from "./IPlugin";
 import { toJson } from 'xml2json';
+import { IPlugin } from './IPlugin';
 
 declare function require(name: string): any;
 
@@ -59,17 +59,17 @@ export class XMLUpdater {
      * @returns The decoded data
      * @memberof XMLUpdater
      */
-    decodePluginFile(): IPlugin {
+    public decodePluginFile(): IPlugin {
         const fileSystem = require(this.fileSystem);
 
         this.pluginFileContents = fileSystem.readFileSync(
-            this.pluginFile
+            this.pluginFile,
         );
 
         this.decodedPluginFileContents = JSON.parse(
             toJson(
-                this.pluginFileContents
-            )
+                this.pluginFileContents,
+            ),
         );
 
         return this.decodedPluginFileContents as IPlugin;
@@ -83,7 +83,7 @@ export class XMLUpdater {
      * @returns The updated decoded file contents
      * @memberof XMLUpdater
      */
-    updateVersion(newVersion: string) {
+    public updateVersion(newVersion: string) {
         if (this.decodedPluginFileContents === undefined) {
             throw new Error('The plugin file is not decoded!');
         }

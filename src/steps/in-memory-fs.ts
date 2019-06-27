@@ -1,9 +1,9 @@
-import { readFileSync } from "fs";
-import { resolve } from "path";
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
 
 const pluginXmlPath = resolve(
     process.cwd(),
-    'plugin.xml'
+    'plugin.xml',
 );
 
 const fileSystem: any = {};
@@ -13,8 +13,8 @@ fileSystem[pluginXmlPath] = readFileSync(
         __dirname,
         '..',
         '__mocks__',
-        'plugin.xml'
-    )
+        'plugin.xml',
+    ),
 );
 
 module.exports = {

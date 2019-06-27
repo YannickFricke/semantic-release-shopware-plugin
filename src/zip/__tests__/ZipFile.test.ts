@@ -1,17 +1,17 @@
-import { ZipFile } from "../ZipFile";
-import { resolve } from "path";
-import { existsSync, unlinkSync } from "fs";
+import { existsSync, unlinkSync } from 'fs';
+import { resolve } from 'path';
+import { ZipFile } from '../ZipFile';
 
 const workingDirectory = resolve('src', '__mocks__');
 const newVersion = '1.0.0';
-const zipFileName = `__mocks__-${newVersion}.zip`
+const zipFileName = `__mocks__-${newVersion}.zip`;
 
 describe('ZipFile', () => {
     let zipFile: ZipFile;
 
     beforeEach(() => {
         zipFile = new ZipFile(
-            workingDirectory
+            workingDirectory,
         );
     });
 

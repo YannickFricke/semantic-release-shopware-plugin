@@ -9,5 +9,5 @@ export interface IPlugin {
         license: string,
         link: string,
         version: string,
-    }
+    };
 }

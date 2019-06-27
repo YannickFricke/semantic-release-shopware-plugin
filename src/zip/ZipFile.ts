@@ -1,6 +1,6 @@
-import { create } from "archiver";
-import { sep } from "path";
-import { createWriteStream, createReadStream, readdirSync, statSync } from "fs";
+import { create } from 'archiver';
+import { createReadStream, createWriteStream, readdirSync, statSync } from 'fs';
+import { sep } from 'path';
 
 /**
  * Zip file
@@ -12,7 +12,7 @@ export class ZipFile {
     /**
      * Root directory of zip file
      */
-    private _rootDirectory: string;
+    private RootDirectory: string;
 
     /**
      * Creates an instance of zip file.
@@ -21,14 +21,14 @@ export class ZipFile {
     constructor(
         rootDirectory: string = process.cwd(),
     ) {
-        this._rootDirectory = rootDirectory;
+        this.RootDirectory = rootDirectory;
     }
 
     /**
      * Gets root directory
      */
     public get rootDirectory(): string {
-        return this._rootDirectory;
+        return this.RootDirectory;
     }
 
     /**
@@ -39,19 +39,19 @@ export class ZipFile {
         const result: string[] = [];
 
         if (directory === '') {
-            directory = this._rootDirectory;
+            directory = this.RootDirectory;
         }
 
         const directoryContents = readdirSync(directory);
 
-        directoryContents.forEach(entry => {
+        directoryContents.forEach((entry) => {
             const completePath = `${directory}/${entry}`;
 
             const entryStats = statSync(completePath);
 
             if (entryStats.isDirectory()) {
                 result.push(
-                    ...this.generateFileList(completePath)
+                    ...this.generateFileList(completePath),
                 );
             } else {
                 result.push(completePath);
@@ -67,10 +67,10 @@ export class ZipFile {
      * @returns {string} The directory name
      */
     public determineFolderName(): string {
-        let result = this._rootDirectory;
+        let result = this.RootDirectory;
 
         if (result.includes(sep)) {
-            const parts = this._rootDirectory.split(sep);
+            const parts = this.RootDirectory.split(sep);
 
             result = parts[parts.length - 1];
         }
@@ -91,9 +91,9 @@ export class ZipFile {
 
         const filesToArchive = this.generateFileList();
 
-        filesToArchive.forEach(file => {
+        filesToArchive.forEach((file) => {
             zipFile.append(createReadStream(file), {
-                name: file.substr(this._rootDirectory.length + 1),
+                name: file.substr(this.RootDirectory.length + 1),
             });
         });
 
