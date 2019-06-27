@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.1.0...v1.1.1) (2019-06-27)
+
+
+### Bug Fixes
+
+* **ci:** Run the build step before releasing ([bcb69b6](https://github.com/YannickFricke/semantic-release-shopware-plugin/commit/bcb69b6))
+
 # [1.1.0](https://github.com/YannickFricke/semantic-release-shopware-plugin/compare/v1.0.1...v1.1.0) (2019-06-27)
 
 
