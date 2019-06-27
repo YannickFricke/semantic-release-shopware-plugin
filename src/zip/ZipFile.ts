@@ -20,7 +20,7 @@ export class ZipFile {
     /**
      * Root directory of zip file
      */
-    private RootDirectory: string;
+    private readonly RootDirectory: string;
 
     /**
      * Creates an instance of zip file.
