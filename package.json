@@ -7,6 +7,8 @@
         "build": "tsc",
         "build:watch": "tsc --watch",
         "commit": "git-cz",
+        "lint": "tslint -p .",
+        "lint:fix": "tslint -p . --fix",
         "release": "semantic-release",
         "test": "jest",
         "test:watch": "jest --watch"
