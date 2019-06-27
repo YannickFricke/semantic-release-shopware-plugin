@@ -45,6 +45,16 @@ describe('ZipFile', () => {
             expect(files.length).toBeGreaterThan(0);
         });
 
+        it('should exclude blacklisted directories', () => {
+            const files = zipFile.generateFileList();
+
+            const result = files.filter((entry) => {
+                return !zipFile.blacklist.includes(entry);
+            });
+
+            expect(result).toHaveLength(1);
+        });
+
         it('should generate a list of files to archive and should not throw an error', () => {
             expect(() => {
                 zipFile.generateFileList();
