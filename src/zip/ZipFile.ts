@@ -110,7 +110,7 @@ export class ZipFile {
 
         filesToArchive.forEach((file) => {
             zipFile.append(createReadStream(file), {
-                name: file.substr(this.RootDirectory.length + 1),
+                name: folderName + sep + file.substr(this.RootDirectory.length + 1),
             });
         });
 
