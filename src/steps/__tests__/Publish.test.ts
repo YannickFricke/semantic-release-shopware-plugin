@@ -1,7 +1,6 @@
 import { resolve } from 'path';
 import { IPluginConfig } from '../../config/IPluginConfig';
-
-const publishFunction = require('../Publish');
+import publishFunction from '../Publish';
 
 describe('Publish tests', () => {
     let pluginConfiguration: IPluginConfig;
