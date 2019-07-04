@@ -6,7 +6,7 @@ import { IPluginConfig } from '../config/IPluginConfig';
 
 let logger: any;
 
-module.exports = (pluginConfig: IPluginConfig, args: any) => {
+const PublishStep = (pluginConfig: IPluginConfig, args: any) => {
     logger = args.logger;
 
     const fs = require(pluginConfig.fileSystem || 'fs');
@@ -67,3 +67,6 @@ const printElements = (obj: any) => {
         logger.log(`${key}: ${entry}`);
     });
 };
+
+module.exports = PublishStep;
+export default PublishStep;
