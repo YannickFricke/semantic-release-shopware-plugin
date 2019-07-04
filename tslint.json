@@ -10,7 +10,8 @@
             "single"
         ],
         "eofline": true,
-        "forin": false
+        "forin": false,
+        "no-console": false
     },
     "rulesDirectory": []
 }
