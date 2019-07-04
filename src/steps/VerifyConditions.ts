@@ -1,20 +1,18 @@
 import axios from 'axios';
 import { IPluginConfig } from '../config/IPluginConfig';
 
-module.exports = async (pluginConfig: IPluginConfig, { logger }: any) => {
+const VerifyConditionsStep = async (pluginConfig: IPluginConfig, { logger }: any) => {
     const requiredEnvironmentVariables = [
         'SCS_USERNAME',
         'SCS_PASSWORD',
     ];
 
-    for (const index in requiredEnvironmentVariables) {
-        const requiredEnvironmentVariable = requiredEnvironmentVariables[index];
+    const filtered = requiredEnvironmentVariables.filter((entry) => {
+        return process.env[entry] === undefined;
+    });
 
-        if (!process.env[requiredEnvironmentVariable]) {
-            throw new Error(
-                `Environment variable "${requiredEnvironmentVariable}" is not set`,
-            );
-        }
+    if (filtered.length > 0) {
+        throw new Error('One of the required environment variables is not set');
     }
 
     const httpClient = axios.create({
@@ -61,3 +59,6 @@ module.exports = async (pluginConfig: IPluginConfig, { logger }: any) => {
         logger.log('Could not remove the access token');
     }
 };
+
+module.exports = VerifyConditionsStep;
+export default VerifyConditionsStep;
