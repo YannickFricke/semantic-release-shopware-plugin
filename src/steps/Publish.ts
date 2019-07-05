@@ -9,6 +9,12 @@ let logger: any;
 const PublishStep = (pluginConfig: IPluginConfig, args: any) => {
     logger = args.logger;
 
+    if (!pluginConfig.shouldReleaseToSCS) {
+        logger.log('');
+
+        return;
+    }
+
     const fs = require(pluginConfig.fileSystem || 'fs');
     const nextRelease = args.nextRelease;
     const nextVersion = nextRelease.version;

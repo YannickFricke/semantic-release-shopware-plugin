@@ -17,4 +17,13 @@ export interface IPluginConfig {
      * will be updated to the newest version which was determined by semantic-release
      */
     shouldIncrementVersion: boolean;
+
+    /**
+     * When set to true the version will be released to
+     * the Shopware Community Store
+     *
+     * @type {boolean}
+     * @memberof IPluginConfig
+     */
+    shouldReleaseToSCS: boolean;
 }
