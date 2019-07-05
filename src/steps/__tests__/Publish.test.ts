@@ -16,6 +16,7 @@ describe('Publish tests', () => {
                 'in-memory-fs',
             ),
             shouldIncrementVersion: true,
+            shouldReleaseToSCS: false,
         };
 
         logMock = jest.fn();
@@ -35,8 +36,5 @@ describe('Publish tests', () => {
         publishFunction(pluginConfiguration, args);
 
         expect(logMock).toBeCalled();
-        expect(logMock).toBeCalledWith(pluginConfiguration);
-        expect(logMock).toBeCalledWith(args.nextRelease);
-        expect(logMock).toBeCalledWith(args.nextRelease.version);
     });
 });
