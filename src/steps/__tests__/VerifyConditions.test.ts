@@ -6,6 +6,7 @@ describe('Verify conditions', () => {
         endpoint: '',
         fileSystem: 'fs',
         shouldIncrementVersion: true,
+        shouldReleaseToSCS: true,
     };
 
     let logger: any;
